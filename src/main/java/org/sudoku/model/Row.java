@@ -1,11 +1,22 @@
 package org.sudoku.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Row
 {
-   private Cell[] cells;
+   private List<Cell> cells;
+   private int size;
 
-   public Row(Cell[] cells)
+   public Row(int size)
    {
-      this.cells = cells;
+      this.size = size;
+      this.cells = new ArrayList<>(size);
+   }
+
+   public void addCell(Cell cell)
+   {
+      cell.link(this);
+      cells.add(cell);
    }
 }
